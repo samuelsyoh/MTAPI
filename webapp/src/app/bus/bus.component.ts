@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BusById, BusByRoute, BusRoutes, BusAllAlertsByRoute, BusAlertByStop} from "../shared/actions/bus.actions";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
+import {TrainById} from "../shared/actions/train.actions";
 
 @Component({
   selector: 'app-bus',
@@ -14,6 +15,7 @@ export class BusComponent implements OnInit {
   selectedRoute: boolean = false;
   chosenRoute: string = "";
   selectedStation: boolean = false;
+  chosenStation: string = "";
 
   center: google.maps.LatLngLiteral = {lat: this.lat, lng: this.lng};
 
@@ -197,6 +199,7 @@ export class BusComponent implements OnInit {
   }
 
   reload(): void {
+    this.store.dispatch(BusById({request: {ids: [this.chosenStation]}}));
   }
 
   selectRoute(event: any) {
@@ -215,6 +218,7 @@ export class BusComponent implements OnInit {
   selectStation(event: any) {
     this.selectedStation = true;
     this.idStationData = [];
+    this.chosenStation = event.source.value.id;
     this.store.dispatch(BusById({request: {ids: [event.source.value.id]}}));
     this.lat = event.source.value.location[0];
     this.lng = event.source.value.location[1];
