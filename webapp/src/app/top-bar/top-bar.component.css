@@ -1,0 +1,4 @@
+.title-center {
+    display: flex;
+    justify-content: space-between;
+}

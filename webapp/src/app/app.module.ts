@@ -30,12 +30,18 @@ import { environment } from '../environments/environment';
 import {MatSliderModule} from "@angular/material/slider";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { TopBarComponent } from './top-bar/top-bar.component';
+import {CovidSymptomForm} from "./top-bar/top-bar.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
     AppComponent,
     TrainComponent,
     BusComponent,
+    TopBarComponent,
+    CovidSymptomForm
   ],
     imports: [
         BrowserModule,
@@ -63,7 +69,9 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
         }),
         MatSliderModule,
         MatRadioModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatDialogModule,
+        MatStepperModule
     ],
   providers: [AsyncBusService, AsyncTrainService],
   bootstrap: [AppComponent]

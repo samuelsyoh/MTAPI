@@ -1,0 +1,40 @@
+<mat-toolbar>
+    COVID-19 Symptom Form:
+</mat-toolbar>
+<div>
+    <mat-stepper orientation="vertical">
+        <mat-step>
+                <ng-template matStepLabel>Symptoms</ng-template>
+                <div class="symptoms">
+                    <mat-checkbox>Fever</mat-checkbox>
+                    <mat-checkbox>Cough</mat-checkbox>
+                    <mat-checkbox>Shortness of Breath</mat-checkbox>
+                    <mat-checkbox>Fatigue</mat-checkbox>
+                    <mat-checkbox>Muscle/Body Aches</mat-checkbox>
+                    <mat-checkbox>Headache</mat-checkbox>
+                    <mat-checkbox>New Loss of Smell</mat-checkbox>
+                    <mat-checkbox>Sore Throat</mat-checkbox>
+                </div>
+        </mat-step>
+        <mat-step>
+            <form>
+                <ng-template matStepLabel>Contact Tracing</ng-template>
+                <form class="symptoms">
+                    <mat-label>What Trains?</mat-label>
+                    <mat-checkbox *ngFor="let route of data.routes">
+                        {{route}}
+                    </mat-checkbox>
+                    <br>
+                    <mat-label>What Buses?</mat-label>
+                    <mat-checkbox *ngFor="let route of data.bus_routes">
+                        {{route}}
+                    </mat-checkbox>
+                </form>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <p>You are now done.</p>
+        </mat-step>
+    </mat-stepper>
+</div>
