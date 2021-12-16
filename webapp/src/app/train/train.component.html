@@ -1,97 +1,100 @@
 <div class="train-dash">
-    <div fxLayout="row wrap">
-        <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
+    <div class="upper">
+       <div class="nav">
+           <mat-form-field appearance="fill">
+               <mat-label>Route</mat-label>
+               <mat-select (selectionChange)="selectRoute($event)">
+                   <mat-option *ngFor="let route of routesData" [value]="route">
+                       {{route}}
+                   </mat-option>
+               </mat-select>
+           </mat-form-field>
 
-            <mat-form-field appearance="fill">
-                <mat-label>Route</mat-label>
-                <mat-select (selectionChange)="selectRoute($event)">
-                    <mat-option *ngFor="let route of routesData" [value]="route">
-                        {{route}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+           <mat-form-field appearance="fill" *ngIf="selectedRoute">
+               <mat-label>Station</mat-label>
+               <mat-select (selectionChange)="selectStation($event)">
+                   <mat-option *ngFor="let station of routeStationsData" [value]="station">
+                       {{station.name}}
+                   </mat-option>
+               </mat-select>
+           </mat-form-field>
+           <mat-expansion-panel *ngIf="selectedStation">
+               <mat-expansion-panel-header>At the station?</mat-expansion-panel-header>
+               <mat-label>Crowdedness:</mat-label>
+               <br>
+               <mat-slider aria-label="unit(s)"></mat-slider>
+               <br>
+               <mat-label>Noisiness:</mat-label>
+               <br>
+               <mat-slider aria-label="unit(s)"></mat-slider>
+               <br>
+               <mat-label>Temperature:</mat-label>
+               <br>
+               <mat-radio-group>
+                   <mat-radio-button value="1">Cold</mat-radio-button>
+                   <mat-radio-button value="2">Just Right</mat-radio-button>
+                   <mat-radio-button value="3">Hot</mat-radio-button>
+               </mat-radio-group>
+               <br>
+               <mat-checkbox>
+                   AC?
+               </mat-checkbox>
+               <br>
+               <mat-checkbox>
+                   Heating?
+               </mat-checkbox>
+           </mat-expansion-panel>
+       </div>
+       <div class="info">
+           <mat-expansion-panel *ngIf="selectedRoute && allAlertsByRouteData != undefined" class="routes">
+               <mat-expansion-panel-header>Route Alerts</mat-expansion-panel-header>
+               <div *ngFor="let alert of allAlertsByRouteData">
+                   <p><b>{{alert['header']}}</b></p>
+                   <div [innerHTML]="alert['en-html']"></div>
+                   <mat-divider></mat-divider>
+               </div>
+               <mat-divider></mat-divider>
+               <p>Updated: {{allAlertsByRouteDataUpdated | date:'mediumTime'}}</p>
+           </mat-expansion-panel>
 
-            <mat-form-field appearance="fill" *ngIf="selectedRoute">
-                <mat-label>Station</mat-label>
-                <mat-select (selectionChange)="selectStation($event)">
-                    <mat-option *ngFor="let station of routeStationsData" [value]="station">
-                        {{station.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+           <mat-divider *ngIf="selectedRoute && selectedStation"></mat-divider>
 
-            <mat-expansion-panel *ngIf="selectedRoute && allAlertsByRouteData != undefined">
-                <mat-expansion-panel-header>Route Alerts</mat-expansion-panel-header>
-                <div *ngFor="let alert of allAlertsByRouteData">
-                    <p><b>{{alert['header']}}</b></p>
-                    <div [innerHTML]="alert['en-html']"></div>
-                    <mat-divider></mat-divider>
-                </div>
-                <mat-divider></mat-divider>
-                <p>Updated: {{allAlertsByRouteDataUpdated | date:'mediumTime'}}</p>
-            </mat-expansion-panel>
-            <mat-expansion-panel *ngIf="selectedStation && alertsByStopData != undefined">
-                <mat-expansion-panel-header>Station Alerts</mat-expansion-panel-header>
-                <div *ngFor="let alert of alertsByStopData">
-                    <p><b>{{alert['header']}}</b></p>
-                    <div [innerHTML]="alert['en-html']"></div>
-                    <mat-divider></mat-divider>
-                </div>
-                <mat-divider></mat-divider>
-                <p>Updated: {{allAlertsByRouteDataUpdated | date:'mediumTime'}}</p>
-            </mat-expansion-panel>
+           <mat-expansion-panel *ngIf="selectedStation && alertsByStopData != undefined" class="stations">
+               <mat-expansion-panel-header>Station Alerts</mat-expansion-panel-header>
+               <div *ngFor="let alert of alertsByStopData">
+                   <p><b>{{alert['header']}}</b></p>
+                   <div [innerHTML]="alert['en-html']"></div>
+                   <mat-divider></mat-divider>
+               </div>
+               <mat-divider></mat-divider>
+               <p>Updated: {{allAlertsByRouteDataUpdated | date:'mediumTime'}}</p>
+           </mat-expansion-panel>
 
-            <div *ngIf="selectedStation">
-                <div *ngFor="let station of idStationData">
-                    <button mat-raised-button (click)="reload()">Refresh</button>
-                    <h3>Last Updated: {{ station['last_update'] | date:'mediumTime' }} </h3>
-                    <h2>North Bound Trains</h2>
-                    <div *ngFor="let time of station['N']">
-                        <p *ngIf="time.route == chosenRoute">{{time.time | date:'mediumTime'}}</p>
-                    </div>
-                    <h2>South Bound Trains</h2>
-                    <div *ngFor="let time of station['S']">
-                        <p *ngIf="time.route == chosenRoute">{{time.time | date:'mediumTime'}}</p>
-                    </div>
-                </div>
-            </div>
+           <mat-divider *ngIf="selectedStation"></mat-divider>
 
-            <mat-expansion-panel *ngIf="selectedStation">
-                <mat-expansion-panel-header>At the station?</mat-expansion-panel-header>
-                <mat-label>Crowdedness:</mat-label>
-                <br>
-                <mat-slider aria-label="unit(s)"></mat-slider>
-                <br>
-                <mat-label>Noisiness:</mat-label>
-                <br>
-                <mat-slider aria-label="unit(s)"></mat-slider>
-                <br>
-                <mat-label>Temperature:</mat-label>
-                <br>
-                <mat-radio-group>
-                    <mat-radio-button value="1">Cold</mat-radio-button>
-                    <mat-radio-button value="2">Just Right</mat-radio-button>
-                    <mat-radio-button value="3">Hot</mat-radio-button>
-                </mat-radio-group>
-                <br>
-                <mat-checkbox>
-                    AC?
-                </mat-checkbox>
-                <br>
-                <mat-checkbox>
-                    Heating?
-                </mat-checkbox>
-            </mat-expansion-panel>
+           <div *ngIf="selectedStation" class="times">
+               <div *ngFor="let station of idStationData">
+                   <button mat-raised-button (click)="reload()">Refresh</button>
+                   <h3>Last Updated: {{ station['last_update'] | date:'mediumTime' }} </h3>
+                   <h2>North Bound Trains</h2>
+                   <div *ngFor="let time of station['N']">
+                       <p *ngIf="time.route == chosenRoute">{{time.time | date:'mediumTime'}}</p>
+                   </div>
+                   <h2>South Bound Trains</h2>
+                   <div *ngFor="let time of station['S']">
+                       <p *ngIf="time.route == chosenRoute">{{time.time | date:'mediumTime'}}</p>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
 
-        </div>
-
-        <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
-            <google-map [center]="center">
-                <map-transit-layer></map-transit-layer>
-                <map-marker *ngFor="let markerPosition of markerPositions"
-                            [position]="markerPosition"
-                            [options]="markerOptions"></map-marker>
-            </google-map>
-        </div>
+    <div class="lower">
+        <google-map width="100%" [center]="center">
+            <map-transit-layer></map-transit-layer>
+            <map-marker *ngFor="let markerPosition of markerPositions"
+                        [position]="markerPosition"
+                        [options]="markerOptions"></map-marker>
+        </google-map>
     </div>
 </div>
