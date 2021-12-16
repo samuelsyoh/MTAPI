@@ -24,9 +24,6 @@
                <br>
                <mat-slider aria-label="unit(s)"></mat-slider>
                <br>
-               <mat-label>Noisiness:</mat-label>
-               <br>
-               <mat-slider aria-label="unit(s)"></mat-slider>
                <br>
                <mat-label>Temperature:</mat-label>
                <br>
@@ -44,10 +41,11 @@
                    Heating?
                </mat-checkbox>
            </mat-expansion-panel>
+           <button class="refresh-btn" mat-raised-button (click)="reload()" *ngIf="selectedStation">Refresh</button>
        </div>
        <div class="info">
            <mat-expansion-panel *ngIf="selectedRoute && allAlertsByRouteData != undefined" class="routes">
-               <mat-expansion-panel-header>Route Alerts</mat-expansion-panel-header>
+               <mat-expansion-panel-header class="alert-header">Route Alerts</mat-expansion-panel-header>
                <div *ngFor="let alert of allAlertsByRouteData">
                    <p><b>{{alert['header']}}</b></p>
                    <div [innerHTML]="alert['en-html']"></div>
@@ -60,7 +58,7 @@
            <mat-divider *ngIf="selectedRoute && selectedStation"></mat-divider>
 
            <mat-expansion-panel *ngIf="selectedStation && alertsByStopData != undefined" class="stations">
-               <mat-expansion-panel-header>Station Alerts</mat-expansion-panel-header>
+               <mat-expansion-panel-header class="alert-header">Station Alerts</mat-expansion-panel-header>
                <div *ngFor="let alert of alertsByStopData">
                    <p><b>{{alert['header']}}</b></p>
                    <div [innerHTML]="alert['en-html']"></div>
@@ -74,7 +72,6 @@
 
            <div *ngIf="selectedStation" class="times">
                <div *ngFor="let station of idStationData">
-                   <button mat-raised-button (click)="reload()">Refresh</button>
                    <h3>Last Updated: {{ station['last_update'] | date:'mediumTime' }} </h3>
                    <h2>North Bound Trains</h2>
                    <div *ngFor="let time of station['N']">
