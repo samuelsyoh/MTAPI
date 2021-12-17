@@ -34,6 +34,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import {CovidSymptomForm} from "./top-bar/top-bar.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatStepperModule} from "@angular/material/stepper";
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import {MatStepperModule} from "@angular/material/stepper";
         MatRadioModule,
         MatCheckboxModule,
         MatDialogModule,
-        MatStepperModule
+        MatStepperModule,
+        MatButtonToggleModule,
+        MatTableModule
     ],
   providers: [AsyncBusService, AsyncTrainService],
   bootstrap: [AppComponent]

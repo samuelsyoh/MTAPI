@@ -2,3 +2,6 @@
     display: flex;
     justify-content: space-between;
 }
+.logo-image{
+    height: 50px;
+}
