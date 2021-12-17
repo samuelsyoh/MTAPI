@@ -1,4 +1,59 @@
 .bus-dash {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
+    font-size: 120%;
+}
+
+.upper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav {
+    width: 70%;
+    margin: 10px;
+}
+
+.info {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.info > * {
+    margin-bottom: 10px;
+    font-size: 120%;
+}
+
+mat-expansion-panel-header {
+    font-size: 110%;
+}
+
+.refresh-btn {
+    margin-top: 10px;
+    font-size: 110%;
+}
+
+.alert-header {
+    color: #D10000;
+}
+
+.survey-header {
+    color: royalblue;
+}
+
+.times {
+    text-align: center;
+}
+
+p, .alert-description, mat-button-toggle, mat-expansion-panel {
+    font-size: 120%;
+}
+
+h2 {
+    display: inline;
 }

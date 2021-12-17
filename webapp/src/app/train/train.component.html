@@ -1,89 +1,95 @@
 <div class="train-dash">
     <div class="upper">
-       <div class="nav">
-           <mat-form-field appearance="fill">
-               <mat-label>Route</mat-label>
-               <mat-select (selectionChange)="selectRoute($event)">
-                   <mat-option *ngFor="let route of routesData" [value]="route">
-                       {{route}}
-                   </mat-option>
-               </mat-select>
-           </mat-form-field>
+        <div class="nav">
+            <mat-form-field appearance="fill">
+                <mat-label>Route</mat-label>
+                <mat-select (selectionChange)="selectRoute($event)">
+                    <mat-option *ngFor="let route of routesData" [value]="route">
+                        {{route}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
 
-           <mat-form-field appearance="fill" *ngIf="selectedRoute">
-               <mat-label>Station</mat-label>
-               <mat-select (selectionChange)="selectStation($event)">
-                   <mat-option *ngFor="let station of routeStationsData" [value]="station">
-                       {{station.name}}
-                   </mat-option>
-               </mat-select>
-           </mat-form-field>
-           <mat-expansion-panel *ngIf="selectedStation">
-               <mat-expansion-panel-header>At the station?</mat-expansion-panel-header>
-               <mat-label>Crowdedness:</mat-label>
-               <br>
-               <mat-slider aria-label="unit(s)"></mat-slider>
-               <br>
-               <br>
-               <mat-label>Temperature:</mat-label>
-               <br>
-               <mat-radio-group>
-                   <mat-radio-button value="1">Cold</mat-radio-button>
-                   <mat-radio-button value="2">Just Right</mat-radio-button>
-                   <mat-radio-button value="3">Hot</mat-radio-button>
-               </mat-radio-group>
-               <br>
-               <mat-checkbox>
-                   AC?
-               </mat-checkbox>
-               <br>
-               <mat-checkbox>
-                   Heating?
-               </mat-checkbox>
-           </mat-expansion-panel>
-           <button class="refresh-btn" mat-raised-button (click)="reload()" *ngIf="selectedStation">Refresh</button>
-       </div>
-       <div class="info">
-           <mat-expansion-panel *ngIf="selectedRoute && allAlertsByRouteData != undefined" class="routes">
-               <mat-expansion-panel-header class="alert-header">Route Alerts</mat-expansion-panel-header>
-               <div *ngFor="let alert of allAlertsByRouteData">
-                   <p><b>{{alert['header']}}</b></p>
-                   <div [innerHTML]="alert['en-html']"></div>
-                   <mat-divider></mat-divider>
-               </div>
-               <mat-divider></mat-divider>
-               <p>Updated: {{allAlertsByRouteDataUpdated | date:'mediumTime'}}</p>
-           </mat-expansion-panel>
+            <mat-form-field appearance="fill" *ngIf="selectedRoute">
+                <mat-label>Station</mat-label>
+                <mat-select (selectionChange)="selectStation($event)">
+                    <mat-option *ngFor="let station of routeStationsData" [value]="station">
+                        {{station.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-expansion-panel *ngIf="selectedStation">
+                <mat-expansion-panel-header class="survey-header">At the station?</mat-expansion-panel-header>
+                <h2>Crowdedness: </h2>
+                <mat-slider thumbLabel tickInterval="1"></mat-slider>
+                <br>
+                <br>
+                <h2>Temperature: </h2>
+                <mat-button-toggle-group>
+                    <mat-button-toggle value="1">Cold</mat-button-toggle>
+                    <mat-button-toggle value="2">Just Right</mat-button-toggle>
+                    <mat-button-toggle value="3">Hot</mat-button-toggle>
+                </mat-button-toggle-group>
+                <br>
+                <br>
+                <h2>Air Conditioning: </h2>
+                <mat-button-toggle-group>
+                    <mat-button-toggle value="1">Cool</mat-button-toggle>
+                    <mat-button-toggle value="2">Heat</mat-button-toggle>
+                    <mat-button-toggle value="3">None</mat-button-toggle>
+                </mat-button-toggle-group>
+                <br>
+                <br>
+                <button mat-raised-button color="primary">Submit</button>
 
-           <mat-divider *ngIf="selectedRoute && selectedStation"></mat-divider>
+            </mat-expansion-panel>
+        </div>
+        <div class="info">
+            <mat-expansion-panel *ngIf="selectedRoute && allAlertsByRouteData != undefined" class="routes">
+                <mat-expansion-panel-header class="alert-header">Route Alerts</mat-expansion-panel-header>
+                <div *ngFor="let alert of allAlertsByRouteData">
+                    <p><b>{{alert['header']}}</b></p>
+                    <div class="alert-description" [innerHTML]="alert['en-html']"></div>
+                    <mat-divider></mat-divider>
+                </div>
+                <mat-divider></mat-divider>
+                <p>Last Updated: {{allAlertsByRouteDataUpdated | date:'mediumTime'}}</p>
+            </mat-expansion-panel>
 
-           <mat-expansion-panel *ngIf="selectedStation && alertsByStopData != undefined" class="stations">
-               <mat-expansion-panel-header class="alert-header">Station Alerts</mat-expansion-panel-header>
-               <div *ngFor="let alert of alertsByStopData">
-                   <p><b>{{alert['header']}}</b></p>
-                   <div [innerHTML]="alert['en-html']"></div>
-                   <mat-divider></mat-divider>
-               </div>
-               <mat-divider></mat-divider>
-               <p>Updated: {{allAlertsByRouteDataUpdated | date:'mediumTime'}}</p>
-           </mat-expansion-panel>
+            <mat-divider *ngIf="selectedRoute && selectedStation"></mat-divider>
 
-           <mat-divider *ngIf="selectedStation"></mat-divider>
+            <mat-expansion-panel *ngIf="selectedStation && alertsByStopData != undefined" class="stations">
+                <mat-expansion-panel-header class="alert-header">Station Alerts</mat-expansion-panel-header>
+                <div *ngFor="let alert of alertsByStopData">
+                    <p><b>{{alert['header']}}</b></p>
+                    <div class="alert-description" [innerHTML]="alert['en-html']"></div>
+                    <mat-divider></mat-divider>
+                </div>
+                <mat-divider></mat-divider>
+                <p>Last Updated: {{allAlertsByRouteDataUpdated | date:'mediumTime'}}</p>
+            </mat-expansion-panel>
 
-           <div *ngIf="selectedStation" class="times">
-               <div *ngFor="let station of idStationData">
-                   <h3>Last Updated: {{ station['last_update'] | date:'mediumTime' }} </h3>
-                   <h2>North Bound Trains</h2>
-                   <div *ngFor="let time of station['N']">
-                       <p *ngIf="time.route == chosenRoute">{{time.time | date:'mediumTime'}}</p>
-                   </div>
-                   <h2>South Bound Trains</h2>
-                   <div *ngFor="let time of station['S']">
-                       <p *ngIf="time.route == chosenRoute">{{time.time | date:'mediumTime'}}</p>
-                   </div>
-               </div>
-           </div>
-       </div>
+            <mat-divider *ngIf="selectedStation"></mat-divider>
+
+            <div *ngIf="selectedStation" class="times">
+                <div *ngFor="let station of idStationData">
+                    <button class="refresh-btn" mat-stroked-button color="primary" (click)="reload()"
+                            *ngIf="selectedStation">Refresh
+                    </button>
+                    <br>
+                    <br>
+                    <h3>Last Updated: {{ station['last_update'] | date:'mediumTime' }} </h3>
+                    <h2>North Bound Trains</h2>
+                    <div *ngFor="let time of station['N']">
+                        <p *ngIf="time.route == chosenRoute">{{time.time | date:'mediumTime'}}</p>
+                    </div>
+                    <h2>South Bound Trains</h2>
+                    <div *ngFor="let time of station['S']">
+                        <p *ngIf="time.route == chosenRoute">{{time.time | date:'mediumTime'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="lower">
