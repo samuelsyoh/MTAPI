@@ -5,7 +5,7 @@ import {catchError, map} from "rxjs/operators";
 
 //let BusRestAPIUrl = 'http://' + self.location.host.split(':')[0] +':5000'
 //let BusRestAPIUrl = 'http://127.0.0.1:5000/bus';
-let BusRestAPIUrl = 'http://18.117.132.87:8080/bus';
+let BusRestAPIUrl = '//18.117.132.87:8080/bus';
 
 @Injectable({
   providedIn: 'root'

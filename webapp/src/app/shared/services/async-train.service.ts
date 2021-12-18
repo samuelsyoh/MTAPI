@@ -5,7 +5,7 @@ import {catchError, map} from "rxjs/operators";
 
 //let TrainRestAPIUrl = 'http://' + self.location.host.split(':')[0] +':5000'
 //let TrainRestAPIUrl = 'http://127.0.0.1:5000';
-let TrainRestAPIUrl = 'http://18.117.132.87:8080';
+let TrainRestAPIUrl = '//18.117.132.87:8080';
 
 @Injectable({
   providedIn: 'root'
