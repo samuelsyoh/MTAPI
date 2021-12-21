@@ -29,10 +29,6 @@
     font-size: 120%;
 }
 
-mat-expansion-panel-header {
-    font-size: 110%;
-}
-
 .refresh-btn {
     margin-top: 10px;
     font-size: 110%;
@@ -50,8 +46,8 @@ mat-expansion-panel-header {
     text-align: center;
 }
 
-p, .alert-description, mat-button-toggle, mat-expansion-panel {
-    font-size: 120%;
+p, .alert-description, mat-expansion-panel-header {
+    font-size: 110%;
 }
 
 h2 {

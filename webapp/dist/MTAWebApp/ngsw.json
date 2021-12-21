@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1637959017245,
+  "timestamp": 1639731926656,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.e73168a7500e135e.js",
+        "/main.c26f68c2d06d5160.js",
         "/manifest.webmanifest",
         "/polyfills.13d797fcf0ccef0e.js",
         "/runtime.8b25908b7709a449.js",
@@ -39,6 +39,7 @@
         "/assets/icons/icon-96x96.png",
         "/assets/images/bus-marker.png",
         "/assets/images/bus-station.svg",
+        "/assets/images/logo.png",
         "/assets/images/subway-marker.png",
         "/assets/images/subway-station.svg",
         "/assets/images/train-station.svg"
@@ -58,12 +59,13 @@
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/assets/images/bus-marker.png": "4d514fe198b6e2b3c0c0b25790fd1ecab80ee741",
     "/assets/images/bus-station.svg": "6ab019b9649fa0c10803bb673e046356e153fcd3",
+    "/assets/images/logo.png": "65b1805d98e250c36706da5feb38d41f3b9e3ebe",
     "/assets/images/subway-marker.png": "b98b28c67e7d28b0b2e15df015a37c36c9868395",
     "/assets/images/subway-station.svg": "5f526431e7163521f30292d7c4444a16dad7b21e",
     "/assets/images/train-station.svg": "04c502a496a14daec4f89ab78906272e6167de03",
-    "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "16be432ec58fc170c82fa377a3cf4968931877b5",
-    "/main.e73168a7500e135e.js": "591c80d796ce3196ebcf82499c27c08e2d796b78",
+    "/favicon.ico": "1bb32107b26e0f156add4a759d3f148c1ea65527",
+    "/index.html": "6201a2437157db46c5ba7a82e38664738164f8b2",
+    "/main.c26f68c2d06d5160.js": "c4a8dbb50baf4c962c51f378b25e23513ccc12b1",
     "/manifest.webmanifest": "78341981abffd383a09c9578e67c4681d25b2f55",
     "/polyfills.13d797fcf0ccef0e.js": "71920c1ce4a7a6bacb7807920a83bd601a5653f0",
     "/runtime.8b25908b7709a449.js": "6c585a54c81a6c5937bf4a978af157a074526299",
