@@ -61,3 +61,5 @@ Thumbs.db
 
 webapp/.idea/*
 server/.idea/*
+
+/webapp/dist/*

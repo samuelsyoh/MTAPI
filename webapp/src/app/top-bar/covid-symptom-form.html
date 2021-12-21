@@ -6,19 +6,67 @@
         <mat-step>
                 <ng-template matStepLabel>Symptoms</ng-template>
                 <div class="symptoms">
-                    <mat-checkbox>Fever</mat-checkbox>
-                    <mat-checkbox>Cough</mat-checkbox>
-                    <mat-checkbox>Shortness of Breath</mat-checkbox>
-                    <mat-checkbox>Fatigue</mat-checkbox>
-                    <mat-checkbox>Muscle/Body Aches</mat-checkbox>
-                    <mat-checkbox>Headache</mat-checkbox>
-                    <mat-checkbox>New Loss of Smell</mat-checkbox>
-                    <mat-checkbox>Sore Throat</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="hasFever">Fever</mat-checkbox>
+                    <mat-button-toggle-group *ngIf="hasFever" value="2">
+                        <mat-button-toggle value="1">Low</mat-button-toggle>
+                        <mat-button-toggle value="2">Mild</mat-button-toggle>
+                        <mat-button-toggle value="3">High</mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                    <mat-checkbox [(ngModel)]="hasCough">Cough</mat-checkbox>
+                    <mat-button-toggle-group *ngIf =hasCough value="2">
+                        <mat-button-toggle value="1">Low</mat-button-toggle>
+                        <mat-button-toggle value="2">Mild</mat-button-toggle>
+                        <mat-button-toggle value="3">High</mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                    <mat-checkbox [(ngModel)]="hasShortBreath">Shortness of Breath</mat-checkbox>
+                    <mat-button-toggle-group *ngIf="hasShortBreath" value="2">
+                        <mat-button-toggle value="1">Low</mat-button-toggle>
+                        <mat-button-toggle value="2">Mild</mat-button-toggle>
+                        <mat-button-toggle value="3">High</mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                    <mat-checkbox [(ngModel)]="hasFatigue">Fatigue</mat-checkbox>
+                    <mat-button-toggle-group *ngIf="hasFatigue" value="2">
+                        <mat-button-toggle value="1">Low</mat-button-toggle>
+                        <mat-button-toggle value="2">Mild</mat-button-toggle>
+                        <mat-button-toggle value="3">High</mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                    <mat-checkbox [(ngModel)]="hasAches">Muscle/Body Aches</mat-checkbox>
+                    <mat-button-toggle-group *ngIf="hasAches" value="2">
+                        <mat-button-toggle value="1">Low</mat-button-toggle>
+                        <mat-button-toggle value="2">Mild</mat-button-toggle>
+                        <mat-button-toggle value="3">High</mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                    <mat-checkbox [(ngModel)]="hasHeadache">Headache</mat-checkbox>
+                    <mat-button-toggle-group *ngIf="hasHeadache" value="2">
+                        <mat-button-toggle value="1">Low</mat-button-toggle>
+                        <mat-button-toggle value="2">Mild</mat-button-toggle>
+                        <mat-button-toggle value="3">High</mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                    <mat-checkbox [(ngModel)]="hasLossofSmell">New Loss of Smell</mat-checkbox>
+                    <mat-button-toggle-group *ngIf="hasLossofSmell" value="2">
+                        <mat-button-toggle value="1">Low</mat-button-toggle>
+                        <mat-button-toggle value="2">Mild</mat-button-toggle>
+                        <mat-button-toggle value="3">High</mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                    <mat-checkbox [(ngModel)]="hasSoreThroat">Sore Throat</mat-checkbox>
+                    <mat-button-toggle-group *ngIf="hasSoreThroat" value="2">
+                        <mat-button-toggle value="1">Low</mat-button-toggle>
+                        <mat-button-toggle value="2">Mild</mat-button-toggle>
+                        <mat-button-toggle value="3">High</mat-button-toggle>
+                    </mat-button-toggle-group>
+
                 </div>
         </mat-step>
         <mat-step>
             <form>
-                <ng-template matStepLabel>Contact Tracing</ng-template>
+                <ng-template matStepLabel>Subway/Bus utilization (check all trains/bus utilizations in the past 24 hours)</ng-template>
                 <form class="symptoms">
                     <mat-label>What Trains?</mat-label>
                     <mat-checkbox *ngFor="let route of data.routes">

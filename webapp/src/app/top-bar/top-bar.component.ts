@@ -109,6 +109,15 @@ export class TopBarComponent implements OnInit {
   styleUrls: ['covid-symptom-form.css']
 })
 export class CovidSymptomForm {
+  hasFever: boolean = false;
+  hasCough: boolean = false;
+  hasShortBreath: boolean = false;
+  hasFatigue: boolean = false;
+  hasAches: boolean = false;
+  hasHeadache: boolean = false;
+  hasLossofSmell: boolean = false;
+  hasSoreThroat: boolean = false;
+
   constructor(
       public dialogRef: MatDialogRef<CovidSymptomForm>,
       @Inject(MAT_DIALOG_DATA) public data: DialogData,
