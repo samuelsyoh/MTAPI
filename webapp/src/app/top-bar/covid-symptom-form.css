@@ -6,3 +6,7 @@
 div {
     font-size: 120%;
 }
+
+mat-button-toggle-group {
+    width: 35%;
+}
