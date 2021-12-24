@@ -20,7 +20,7 @@ import {GoogleMapsModule} from "@angular/google-maps";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatExpansionModule} from "@angular/material/expansion";
@@ -36,6 +36,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTableModule} from '@angular/material/table';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -75,9 +77,24 @@ import {MatTableModule} from '@angular/material/table';
         MatDialogModule,
         MatStepperModule,
         MatButtonToggleModule,
-        MatTableModule
+        MatTableModule,
+        ReactiveFormsModule,
+        SocialLoginModule
     ],
-  providers: [AsyncBusService, AsyncTrainService],
+  providers: [AsyncBusService, AsyncTrainService, {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+          autoLogin: false,
+          providers: [
+              {
+                  id: GoogleLoginProvider.PROVIDER_ID,
+                  provider: new GoogleLoginProvider(
+                      '183135657631-kf2oo1eib05rkdejhenqn0f99q70olq1.apps.googleusercontent.com'
+                  )
+              }
+          ]
+      } as SocialAuthServiceConfig,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
