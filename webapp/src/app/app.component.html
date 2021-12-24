@@ -1,9 +1,29 @@
-<app-top-bar></app-top-bar>
-<mat-tab-group mat-stretch-tabs>
-    <mat-tab label="Subway">
-        <app-train></app-train>
-    </mat-tab>
-    <mat-tab label="Bus">
-        <app-bus></app-bus>
-    </mat-tab>
-</mat-tab-group>
+<div class="container" style="max-width: 550px" *ngIf="isLoggedin == false">
+    <h2 class="text-center mb-5">MTA Web App</h2>
+
+    <p>
+        Welcome to the MTA web application. Please start by logging in with google down below.
+    </p>
+
+    <div>
+        <button type="button" (click)="loginWithGoogle()">Login with Google</button>
+    </div>
+
+</div>
+<div *ngIf="isLoggedin == true" class="main-page">
+    <app-top-bar></app-top-bar>
+    <div class="user-info">
+        <mat-label>Signed in as: {{socialUser.email}}</mat-label>
+        <button mat-button (click)="logOut()">Log Out</button>
+    </div>
+
+    <mat-tab-group mat-stretch-tabs>
+        <mat-tab label="Subway">
+            <app-train></app-train>
+        </mat-tab>
+        <mat-tab label="Bus">
+            <app-bus></app-bus>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+
