@@ -31,7 +31,7 @@
 
 .refresh-btn {
     margin-top: 10px;
-    font-size: 110%;
+    font-size: 130%;
 }
 
 .alert-header {
@@ -46,10 +46,30 @@
     text-align: center;
 }
 
-p, .alert-description, mat-expansion-panel-header {
-    font-size: 110%;
+p, .alert-description, mat-expansion-panel-header, button {
+    font-size: 130%;
+}
+
+mat-expansion-panel {
+    width: 100%;
 }
 
 h2 {
     display: inline;
+    font-size: x-large;
+}
+
+h3, mat-form-field{
+    font-size: 110%;
+}
+
+datalist {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 150%;
+}
+
+input {
+    width: 100%;
 }
