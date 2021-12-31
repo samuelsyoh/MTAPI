@@ -18,30 +18,58 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
+
             <mat-expansion-panel *ngIf="selectedStation">
                 <mat-expansion-panel-header class="survey-header">At the station?</mat-expansion-panel-header>
                 <h2>Crowdedness: </h2>
-                <mat-button-toggle-group>
-                    <mat-button-toggle value="1">Low</mat-button-toggle>
-                    <mat-button-toggle value="2">Mild</mat-button-toggle>
-                    <mat-button-toggle value="3">High</mat-button-toggle>
-                </mat-button-toggle-group>
+                <input type="range" list="tickmarks">
+                <datalist id="tickmarks">
+                    <option value="0" label="Low"></option>
+                    <option value="10"></option>
+                    <option value="20"></option>
+                    <option value="30"></option>
+                    <option value="40"></option>
+                    <option value="50" label="Mild"></option>
+                    <option value="60"></option>
+                    <option value="70"></option>
+                    <option value="80"></option>
+                    <option value="90"></option>
+                    <option value="100" label="High"></option>
+                </datalist>
                 <br>
                 <br>
                 <h2>Temperature: </h2>
-                <mat-button-toggle-group>
-                    <mat-button-toggle value="1">Cold</mat-button-toggle>
-                    <mat-button-toggle value="2">Mild</mat-button-toggle>
-                    <mat-button-toggle value="3">Hot</mat-button-toggle>
-                </mat-button-toggle-group>
+                <input type="range" list="tickmarks">
+                <datalist id="tickmarks">
+                    <option value="0" label="Cold"></option>
+                    <option value="10"></option>
+                    <option value="20"></option>
+                    <option value="30"></option>
+                    <option value="40"></option>
+                    <option value="50" label="Mild"></option>
+                    <option value="60"></option>
+                    <option value="70"></option>
+                    <option value="80"></option>
+                    <option value="90"></option>
+                    <option value="100" label="Hot"></option>
+                </datalist>
                 <br>
                 <br>
                 <h2>Air Conditioning: </h2>
-                <mat-button-toggle-group>
-                    <mat-button-toggle value="1">Cool</mat-button-toggle>
-                    <mat-button-toggle value="2">None</mat-button-toggle>
-                    <mat-button-toggle value="3">Heat</mat-button-toggle>
-                </mat-button-toggle-group>
+                <input type="range" list="tickmarks">
+                <datalist id="tickmarks">
+                    <option value="0" label="Cool"></option>
+                    <option value="10"></option>
+                    <option value="20"></option>
+                    <option value="30"></option>
+                    <option value="40"></option>
+                    <option value="50" label="Mild"></option>
+                    <option value="60"></option>
+                    <option value="70"></option>
+                    <option value="80"></option>
+                    <option value="90"></option>
+                    <option value="100" label="Heat"></option>
+                </datalist>
                 <br>
                 <br>
                 <button mat-raised-button color="primary">Submit</button>

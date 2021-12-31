@@ -5,3 +5,7 @@
 .logo-image{
     height: 50px;
 }
+
+button {
+    font-size: 100%;
+}
